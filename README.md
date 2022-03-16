@@ -7,3 +7,4 @@
 * set environment vars in Github
 * create new stack named `prod`
 * create new feature branches and push to GH
+*
