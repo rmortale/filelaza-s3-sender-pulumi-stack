@@ -1,0 +1,3 @@
+name: filelaza-s3-sender
+runtime: nodejs
+description: Service to put data in to AWS S3
