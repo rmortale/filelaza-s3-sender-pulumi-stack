@@ -43,7 +43,7 @@ const eventBridgePermission = new aws.lambda.Permission(`${prefix}-eventBridgePe
     action: "lambda:InvokeFunction",
     function: lambda.name,
     principal: "events.amazonaws.com",
-    sourceArn: pulumi.interpolate`${eventrule.arn}:*`,
+    sourceArn: eventrule.arn,
 });
 
 export const s3adapterFunction = lambda;
