@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
+import { eventrule } from "./eventbridge";
 
 let config = new pulumi.Config();
 let prefix = config.require("prefix");
@@ -36,6 +37,13 @@ const lambda = new aws.lambda.Function(`${prefix}-s3-adapter-function`, {
             URL_EXPIRATION_SECONDS: "300"
         },
     },
+});
+
+const eventBridgePermission = new aws.lambda.Permission(`${prefix}-eventBridgePermission`, {
+    action: "lambda:InvokeFunction",
+    function: lambda.name,
+    principal: "events.amazonaws.com",
+    sourceArn: pulumi.interpolate`${eventrule.arn}:*`,
 });
 
 export const s3adapterFunction = lambda;
