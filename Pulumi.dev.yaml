@@ -3,4 +3,4 @@ config:
   filelaza-s3-sender:adapterBucket: rmortale/s3-upload-pulumi/dev
   filelaza-s3-sender:prefix: filelaza-s3-sender-pulumi-dev
   filelaza-s3-sender:s3senderFunctionBucket: filelaza-lambda-upload-bucket
-  filelaza-s3-sender:s3senderFunctionKey: filelaza-s3-adapter-lambda-b3a51202.zip
+  filelaza-s3-sender:s3senderFunctionKey: filelaza-s3-adapter-lambda-aa91dde6.zip
