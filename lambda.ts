@@ -17,6 +17,10 @@ new aws.iam.RolePolicyAttachment(`${prefix}-funcBasicRoleAttach`, {
     role: role,
     policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
 });
+new aws.iam.RolePolicyAttachment(`${prefix}-funcXrayRoleAttach`, {
+    role: role,
+    policyArn: aws.iam.ManagedPolicies.AWSXRayDaemonWriteAccess,
+});
 new aws.iam.RolePolicyAttachment(`${prefix}-funcS3RoleAttach`, {
     role: role,
     policyArn: aws.iam.ManagedPolicies.AmazonS3FullAccess,
@@ -26,6 +30,9 @@ new aws.iam.RolePolicyAttachment(`${prefix}-funcS3RoleAttach`, {
 const lambda = new aws.lambda.Function(`${prefix}-s3-adapter-function`, {
     s3Bucket: bucket,
     s3Key: key,
+    tracingConfig: {
+        mode: "Active",
+    },
     runtime: aws.lambda.Java11Runtime,
     architectures: ["arm64"],
     memorySize: 512,
