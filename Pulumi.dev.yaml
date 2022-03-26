@@ -4,4 +4,4 @@ config:
   filelaza-s3-sender:eventTargetMaximumRetryAttempts: "3"
   filelaza-s3-sender:prefix: filelaza-s3-sender-pulumi-dev
   filelaza-s3-sender:s3senderFunctionBucket: filelaza-lambda-upload-bucket
-  filelaza-s3-sender:s3senderFunctionKey: filelaza-s3-adapter-lambda-80072d4c.zip
+  filelaza-s3-sender:s3senderFunctionKey: filelaza-s3-adapter-lambda-8043e742.zip
