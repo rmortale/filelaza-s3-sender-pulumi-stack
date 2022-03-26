@@ -36,7 +36,7 @@ const lambda = new aws.lambda.Function(`${prefix}-s3-adapter-function`, {
     runtime: aws.lambda.Java11Runtime,
     architectures: ["arm64"],
     memorySize: 512,
-    timeout: 15,
+    timeout: 20,
     role: role.arn,
     handler: "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest",
     environment: {
