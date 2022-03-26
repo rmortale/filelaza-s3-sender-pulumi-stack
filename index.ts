@@ -6,11 +6,15 @@ import { eventrule } from "./eventbridge";
 
 let config = new pulumi.Config();
 let prefix = config.require("prefix");
+let retries = config.requireNumber("eventTargetMaximumRetryAttempts");
 
 const s3eventTarget = new aws.cloudwatch.EventTarget(`${prefix}-s3-event-target`, {
     rule: eventrule.name,
     targetId: "SendToS3Lambda",
     arn: s3adapterFunction.arn,
+    retryPolicy: {
+        maximumRetryAttempts: retries
+    }
 });
 
 export const lambda = s3adapterFunction.arn;
