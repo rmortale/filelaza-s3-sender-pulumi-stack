@@ -13,7 +13,8 @@ const s3eventTarget = new aws.cloudwatch.EventTarget(`${prefix}-s3-event-target`
     targetId: "SendToS3Lambda",
     arn: s3adapterFunction.arn,
     retryPolicy: {
-        maximumRetryAttempts: retries
+        maximumRetryAttempts: retries,
+        maximumEventAgeInSeconds: 3600
     }
 });
 
