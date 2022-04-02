@@ -25,6 +25,10 @@ new aws.iam.RolePolicyAttachment(`${prefix}-funcS3RoleAttach`, {
     role: role,
     policyArn: aws.iam.ManagedPolicies.AmazonS3FullAccess,
 });
+new aws.iam.RolePolicyAttachment(`${prefix}-funcEventBridgeRoleAttach`, {
+    role: role,
+    policyArn: aws.iam.ManagedPolicies.CloudWatchEventsFullAccess,
+});
 
 // Next, create the Lambda function itself:
 const lambda = new aws.lambda.Function(`${prefix}-s3-adapter-function`, {
